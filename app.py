@@ -7,8 +7,12 @@ from dotenv import load_dotenv
 import requests
 
 load_dotenv()
-app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY", "replace-this-secret-before-deploying")
+app = Flask(__name__, template_folder=".", static_folder=None)
+@app.route("/static/style.css")
+def website_css():
+    return send_file("style.css", mimetype="text/css")
+
+app.secret_key = "ricky-session-key-f21d13ad17048b6d5c364f38fb00264fd01da80d284600ab29046a808f091ebe"  # Keep this private; change it if the website is compromised.
 OWNER_ID = os.getenv("OWNER_ID", "1565278113527496769")
 DISCORD_CLIENT_ID = os.getenv("DISCORD_CLIENT_ID", "")
 DISCORD_CLIENT_SECRET = os.getenv("DISCORD_CLIENT_SECRET", "")

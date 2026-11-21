@@ -32,7 +32,7 @@ In the Discord Developer Portal, create an application and add the OAuth2 redire
 
 ## Important deployment/security notes
 - This is a starter MVP, not production-hardened.
-- Set a strong `SECRET_KEY`; never publish `.env`.
+- The Flask session key is set inside `app.py` in this version. Keep the file private and rotate the key if compromised.
 - Deploy with HTTPS and a production WSGI server, not Flask's development server.
 - Keep `uploads/` and `ricky.db` on persistent storage and back them up.
 - OAuth currently supports Discord only. Google and TikTok sign-in are not wired up; their OAuth setups require separate provider configuration.
